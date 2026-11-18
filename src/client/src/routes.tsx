@@ -4,6 +4,7 @@ import { GuestOnly, RequireAuth } from "./auth/guards";
 import { HomePage } from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
+import { GroupsPage } from "./pages/GroupsPage";
 
 export function AppRoutes() {
   return (
@@ -15,6 +16,7 @@ export function AppRoutes() {
       <Route element={<RequireAuth />}>
         <Route element={<AppShell />}>
           <Route path="/" element={<HomePage />} />
+          <Route path="/groups" element={<GroupsPage />} />
         </Route>
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
