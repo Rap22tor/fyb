@@ -1,8 +1,11 @@
-import { Navigate, Route, Routes } from "react-router";
+import { Route, Routes } from "react-router";
+import { AppShell } from "./components/AppShell";
 import { GuestOnly, RequireAuth } from "./auth/guards";
 import { HomePage } from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
+import { NotFoundPage } from "./pages/NotFoundPage";
 import { RegisterPage } from "./pages/RegisterPage";
+import { GroupsPage } from "./pages/GroupsPage";
 
 export function AppRoutes() {
   return (
@@ -12,9 +15,12 @@ export function AppRoutes() {
         <Route path="/register" element={<RegisterPage />} />
       </Route>
       <Route element={<RequireAuth />}>
-        <Route path="/" element={<HomePage />} />
+        <Route element={<AppShell />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/groups" element={<GroupsPage />} />
+        </Route>
       </Route>
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }
