@@ -24,7 +24,7 @@ export function createApp(db: Db, sessionSecret: string) {
     res.json({ status: "ok", db: row.ok === 1 });
   });
 
-  app.use("/api", authRouter());
+  app.use("/api", authRouter(db));
 
   // Unknown API routes get JSON, not the React page.
   // TODO investiage
