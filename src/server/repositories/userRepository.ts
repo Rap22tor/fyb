@@ -21,13 +21,24 @@ export function addUser(db: Db, data: CreateUserInput) : number {
 
 
 export function findUserByEmail(db: Db, email: string): AuthUser | undefined {
-  const findUserQuery = db.prepare(`
+  const statement = db.prepare(`
     SELECT user_id, username, email, password_hash, created_at
     FROM users
     WHERE email = ?
   `);
 
-  return findUserQuery.get(email) as AuthUser | undefined;
+  return statement.get(email) as AuthUser | undefined;
+}
+
+
+export function findUserById(db: Db, userId: number) : PublicUser | undefined {
+  const statement = db.prepare(`
+    SELECT user_id, username, email, created_at
+    FROM users
+    WHERE user_id = ?
+  `);
+
+  return statement.get(userId) as PublicUser | undefined;
 }
 
 
