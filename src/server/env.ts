@@ -1,4 +1,7 @@
 import "dotenv/config";
+console.log("DEBUG SECRET:", process.env.SESSION_SECRET);
+console.log("CWD:", process.cwd());
+console.log("SESSION_SECRET length:", process.env.SESSION_SECRET?.length);
 
 const MIN_SESSION_SECRET_LENGTH = 32;
 

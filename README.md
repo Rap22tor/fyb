@@ -128,7 +128,15 @@ so restart it after every change. This is the mode the course expects
   carry the server's own message, and only JSON is handled.
 
 ## Features
-...
+
+- **User Authentication & Session Management**: Secure registration and login using `bcrypt` password hashing and cookie-based sessions (`express-session` with `httpOnly` and `sameSite` configuration).
+- **Group Catalog & Discovery**: Browse public and private study groups, with advanced filtering and real-time search by title/tags.
+- **Flexible Group Management**: 
+  - Create public or private study groups with custom capacity limits and unique invite links.
+  - Direct member addition via system usernames or invite links, with pending request approvals for private groups.
+- **Interactive Study Sessions**: Admins can schedule, update, or remove upcoming study sessions (including date, time, and conference links) for group members.
+- **Group Discussions**: Integrated comment sections allowing members to collaborate, share resources, and communicate within their groups (with strict access privacy for private groups).
+- **Robust Access Control**: Comprehensive ownership and membership checks ensuring that only authorized administrators can modify group settings, manage participants, or handle sessions.
 
 ## AI Usage
 

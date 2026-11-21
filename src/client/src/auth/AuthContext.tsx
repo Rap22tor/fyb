@@ -16,13 +16,13 @@ import {
   type LoginInput,
   type RegisterInput,
 } from "../api/auth";
-import { type User } from "../../../shared/authTypes";
+import { type AuthUser } from "../../../shared/authTypes";
 
 type AuthStatus = "loading" | "authenticated" | "anonymous";
 
 interface AuthContextValue {
   status: AuthStatus;
-  user: User | null;
+  user: AuthUser | null;
   login: (input: LoginInput) => Promise<void>;
   register: (input: RegisterInput) => Promise<void>;
   logout: () => Promise<void>;
@@ -37,7 +37,7 @@ interface AuthProviderProps {
 // Holds who is signed in. On start it asks the server (GET /api/me); a 401, or
 // any other failure, simply means "nobody is signed in".
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<AuthUser | null>(null);
   const [status, setStatus] = useState<AuthStatus>("loading");
 
   useEffect(() => {

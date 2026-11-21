@@ -1,5 +1,7 @@
-export interface User {
-  id: number;
+export interface AuthUser {
+  user_id: number;
+  username: string;
   email: string;
-  userName: string;
+  password_hash: string;
+  created_at: string;
 }
